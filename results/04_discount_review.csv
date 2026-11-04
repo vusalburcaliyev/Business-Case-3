@@ -1,0 +1,5 @@
+year,price_group,lines,units,sales_usd,discounts_usd,profit_usd,margin_pct,reseller_sales_share_pct
+2012,Discounted,589,7251,1050986.12,67716.76,-198202.23,-18.86,5.36
+2012,Full price,14385,47393,18570400.69,0.0,829572.13,4.47,94.64
+2013,Discounted,945,9485,1509710.14,121179.16,-365902.67,-24.24,7.86
+2013,Full price,15065,46636,17690677.97,0.0,212596.45,1.2,92.14

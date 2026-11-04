@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="system-ui,sans-serif" role="img">
+<title>2013 AdventureWorks U.S. sales and gross profit by channel</title>
+<rect x="1" y="1" width="898" height="318" rx="14" fill="#f4f5fa" stroke="#d9deec"/>
+<path d="M15 1H885Q899 1 899 15V88H1V15Q1 1 15 1" fill="#232b50"/>
+<text x="23" y="29" fill="#d2caff" font-size="13" font-weight="750">BUSINESS CASE 03  /  2013 U.S. SALES</text>
+<text x="23" y="62" fill="#ffffff" font-size="25" font-weight="760">Sales and gross profit tell different stories</text>
+<rect x="22" y="102" width="278" height="63" rx="8" fill="white" stroke="#d9deec"/>
+<text x="33" y="126" fill="#535f76" font-size="13" font-weight="650">Total sales</text>
+<text x="33" y="150" fill="#202642" font-size="22" font-weight="750">$24,661,612</text>
+<rect x="312" y="102" width="278" height="63" rx="8" fill="white" stroke="#d9deec"/>
+<text x="323" y="126" fill="#535f76" font-size="13" font-weight="650">Gross profit</text>
+<text x="323" y="150" fill="#202642" font-size="22" font-weight="750">$2,145,922</text>
+<rect x="602" y="102" width="278" height="63" rx="8" fill="white" stroke="#d9deec"/>
+<text x="613" y="126" fill="#535f76" font-size="13" font-weight="650">Gross margin</text>
+<text x="613" y="150" fill="#202642" font-size="22" font-weight="750">8.70%</text>
+<text x="24" y="192" fill="#202642" font-size="14" font-weight="750">Channel</text>
+<text x="258" y="192" fill="#202642" font-size="14" font-weight="750">Sales</text>
+<text x="518" y="192" fill="#202642" font-size="14" font-weight="750">Gross profit</text>
+<text x="735" y="192" fill="#202642" font-size="14" font-weight="750">Gross margin</text>
+<path d="M24 205H874" stroke="#d9deec"/>
+<text x="24" y="224" fill="#202642" font-size="16" font-weight="650">Internet</text>
+<text x="258" y="224" fill="#202642" font-size="16" font-weight="500">$5,461,224</text>
+<text x="518" y="224" fill="#5545a8" font-size="16" font-weight="750">$2,299,228</text>
+<text x="735" y="224" fill="#202642" font-size="16" font-weight="500">42.10%</text>
+<path d="M24 243H874" stroke="#d9deec"/>
+<text x="24" y="262" fill="#202642" font-size="16" font-weight="650">Reseller</text>
+<text x="258" y="262" fill="#202642" font-size="16" font-weight="500">$19,200,388</text>
+<text x="518" y="262" fill="#af4838" font-size="16" font-weight="750">−$153,306</text>
+<text x="735" y="262" fill="#202642" font-size="16" font-weight="500">-0.80%</text>
+<text x="24" y="300" fill="#535f76" font-size="12" font-weight="500">Source: Microsoft AdventureWorksDW · Fictitious sample · USD orders</text>
+</svg>

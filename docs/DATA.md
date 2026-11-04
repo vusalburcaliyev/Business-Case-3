@@ -19,7 +19,6 @@ Sales measure = source SalesAmount (after recorded discount, before tax and frei
 
 ```bash
 python scripts/build.py path/to/AdventureWorksDW-data-warehouse-install-script.zip
-node --test tests/dashboard.test.cjs
 ```
 
-Python 3.10+ with SQLite 3.25+ is sufficient; no Python packages or SQL Server install are needed. Node.js is only needed for the dashboard tests. The build recreates the model in memory, reconciles the annual totals to the channel, month, category, and discount outputs, and regenerates the dashboard and preview. The tested ZIP SHA-256 was `73c27309d17cd30bf5351665401106abf649d9f9a9ecb0c770682f6be965aba8`.
+Python 3.10+ with SQLite 3.25+ is sufficient. The build checks that the annual totals match the channel, month, category, and discount results and regenerates the README figure.

@@ -118,13 +118,9 @@ def main():
         audit = prepare(db, args.archive)
         payload = export(db, audit)
     print(json.dumps(audit, sort_keys=True))
-    template = ROOT / "dashboard/template.html"
-    if template.exists():
-        from previews import make
-        content = json.dumps(payload, separators=(",", ":"), ensure_ascii=True).replace("<","\\u003c")
-        (ROOT / "Sales_Dashboard.html").write_text(
-            template.read_text(encoding="utf-8").replace("/* @RESULTS */",content), encoding="utf-8")
-        make(ROOT, payload)
+    from previews import make
+
+    make(ROOT, payload)
 
 
 if __name__ == "__main__":

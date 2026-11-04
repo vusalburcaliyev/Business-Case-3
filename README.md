@@ -50,7 +50,7 @@ I kept each channel's average order value in the [scorecard query](sql/01_channe
 
 ![2013 sales and gross profit by channel](assets/sales_profit.svg)
 
-*The dashboard shows why I kept the two metrics side by side: Reseller led sales at $19.20M, while Internet led gross profit at $2.30M. Open the [Power BI project](power-bi/) to switch years and compare the sales and gross profit charts.*
+*The dashboard shows why I kept the two metrics side by side: Reseller led sales at $19.20M, while Internet led gross profit at $2.30M. Download and extract the repository ZIP, open `power-bi/AdventureWorksSales.pbip` in Power BI Desktop, and select **Refresh**.*
 
 #### 2. The strongest sales month was not the strongest profit month
 

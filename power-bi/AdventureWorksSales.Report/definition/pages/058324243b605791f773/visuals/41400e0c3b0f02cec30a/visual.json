@@ -1,0 +1,88 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "41400e0c3b0f02cec30a",
+  "position": {
+    "x": 844,
+    "y": 248,
+    "z": 8000,
+    "height": 363,
+    "width": 398,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reseller Lines"
+                    }
+                  },
+                  "Property": "Price group"
+                }
+              },
+              "queryRef": "Reseller Lines.Price group",
+              "nativeQueryRef": "Price group"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reseller Lines"
+                    }
+                  },
+                  "Property": "Reseller gross profit"
+                }
+              },
+              "queryRef": "Reseller Lines.Reseller gross profit",
+              "nativeQueryRef": "Reseller gross profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reseller Lines"
+                    }
+                  },
+                  "Property": "Reseller margin"
+                }
+              },
+              "queryRef": "Reseller Lines.Reseller margin",
+              "nativeQueryRef": "Reseller margin"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reseller price groups'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

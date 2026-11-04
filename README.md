@@ -4,7 +4,7 @@
 
 I wanted to know whether the biggest sales channel was also the one making the most money. In the AdventureWorks sample, U.S. sales grew **17.11%** in 2013. Resellers brought in nearly **78%** of that year's sales, but their gross profit was negative. I compared the two channels to see what the sales total was hiding.
 
-🔍 [SQL queries](sql/) · [Interactive dashboard](Sales_Dashboard.html) · [Query results](results/)
+🔍 [SQL queries](sql/) · [Power BI report](power-bi/) · [Query results](results/)
 
 ## Background
 
@@ -24,7 +24,7 @@ The two sales tables contain **121,253 lines** before filters. I combined them i
 
 - **SQL and SQLite:** I joined the sales and lookup tables, calculated KPIs, and compared years, categories, and price groups.
 - **Python:** I loaded the original files, checked the keys and amounts, and exported the query results.
-- **HTML and JavaScript:** I built a dashboard that switches between years and between sales and gross profit.
+- **Power BI and DAX:** I compared sales and gross profit by channel, year, and category in an editable report.
 - **GitHub:** I shared the queries, outputs, and analysis.
 
 ## Analysis
@@ -50,7 +50,7 @@ I kept each channel's average order value in the [scorecard query](sql/01_channe
 
 ![2013 sales and gross profit by channel](assets/sales_profit.svg)
 
-*The dashboard shows why I kept the two metrics side by side: Reseller led sales at $19.20M, while Internet led gross profit at $2.30M. Download the [HTML dashboard](Sales_Dashboard.html) and open it in a browser to switch years and metrics.*
+*The dashboard shows why I kept the two metrics side by side: Reseller led sales at $19.20M, while Internet led gross profit at $2.30M. Open the [Power BI project](power-bi/) to switch years and compare the sales and gross profit charts.*
 
 #### 2. The strongest sales month was not the strongest profit month
 

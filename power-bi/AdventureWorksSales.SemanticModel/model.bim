@@ -1,0 +1,376 @@
+{
+  "name": "AdventureWorksSales",
+  "compatibilityLevel": 1600,
+  "model": {
+    "name": "Model",
+    "culture": "en-US",
+    "sourceQueryCulture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Year\", \"Channel Results\", \"Monthly Results\", \"Categories\", \"Reseller Lines\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Year",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "Year",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Snapshot = Json.Document(Binary.Decompress(Binary.FromText(\"i45WMjIwNFKK1QEzjJViYwE=\", BinaryEncoding.Base64), Compression.Deflate)),",
+                "    Rows = Table.FromRows(Snapshot, type table [#\"Year\" = nullable text])",
+                "in",
+                "    Rows"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Channel Results",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Channel",
+            "dataType": "string",
+            "sourceColumn": "Channel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales USD",
+            "dataType": "double",
+            "sourceColumn": "Sales USD",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Profit USD",
+            "dataType": "double",
+            "sourceColumn": "Profit USD",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Orders",
+            "dataType": "int64",
+            "sourceColumn": "Orders",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Units",
+            "dataType": "int64",
+            "sourceColumn": "Units",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales",
+            "expression": "SUM('Channel Results'[Sales USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          },
+          {
+            "name": "Gross profit",
+            "expression": "SUM('Channel Results'[Profit USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          },
+          {
+            "name": "Gross margin",
+            "expression": "DIVIDE([Gross profit], [Sales])",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Order count",
+            "expression": "SUM('Channel Results'[Orders])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Units sold",
+            "expression": "SUM('Channel Results'[Units])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Average order value",
+            "expression": "DIVIDE([Sales], [Order count])",
+            "formatString": "$#,0.00;($#,0.00)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Channel Results",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Snapshot = Json.Document(Binary.Decompress(Binary.FromText(\"VY05DsMwDAT/onpD8JAo8glp0xoq1RkuHP8fUZPAqXdmZ9uKsmhBeR7XPI95FUi1zjWoG5wtM8gR3hFZB378a77nvs9z8ekqFk4hcBPzpER0R6tev4r9JdYiqpVMoZqpGsSJ3jwhkew36d5RZosgETykmbGTKtINbd3JGB8=\", BinaryEncoding.Base64), Compression.Deflate)),",
+                "    Rows = Table.FromRows(Snapshot, type table [#\"Year\" = nullable text, #\"Channel\" = nullable text, #\"Sales USD\" = nullable number, #\"Profit USD\" = nullable number, #\"Orders\" = nullable number, #\"Units\" = nullable number]),",
+                "    Typed = Table.TransformColumnTypes(Rows, {{\"Orders\", Int64.Type}, {\"Units\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Monthly Results",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales USD",
+            "dataType": "double",
+            "sourceColumn": "Sales USD",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Profit USD",
+            "dataType": "double",
+            "sourceColumn": "Profit USD",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Monthly sales",
+            "expression": "SUM('Monthly Results'[Sales USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          },
+          {
+            "name": "Monthly gross profit",
+            "expression": "SUM('Monthly Results'[Profit USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Monthly Results",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Snapshot = Json.Document(Binary.Decompress(Binary.FromText(\"bZPJbQNBDARz0XtE8D5iMZR/Gu6RDRgQ/drBooZLsnq/vh7Koo/zfjxZHkdztEqJ60h1xBD763xwOKlIaRq5H0mRVtqYPY5YTnlQ6WlXbWJdmKOadkgoZeOGaTe1LC5QLnwYVTqOiMUMRS0uwYmMeJL06UlcqFhYAevsHKOwI4x5ijgX1+C4g13xsVNTjHF2dwPMWUPjYo15hmY+MeE7rHmOk2NYN2kjW5jcamlcRo0Nq2Jaqs3pHaJEJyntPJOth7p/Ofvh7NcsTimkcbIS5SwXdsVG2HBR1nmqYD8ovLhrFlojseK56xHc+KfeWy1aQlCgAlca2/ZdLy6XXVAGsyPR6NMXds2WdKP5KXTKrMjnwq7ZKX3HQw/eeQmxLA5mlS0M+TScOqX/8vSHXbOjyCcTX85gmTw+ubdaS0MEkHL8IK2IQMzirgv0NuZUfbSycWpdHGSk1dzPCuwVmsAP8np9Aw==\", BinaryEncoding.Base64), Compression.Deflate)),",
+                "    Rows = Table.FromRows(Snapshot, type table [#\"Year\" = nullable text, #\"Month\" = nullable text, #\"Sales USD\" = nullable number, #\"Profit USD\" = nullable number])",
+                "in",
+                "    Rows"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Categories",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales USD",
+            "dataType": "double",
+            "sourceColumn": "Sales USD",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Profit USD",
+            "dataType": "double",
+            "sourceColumn": "Profit USD",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Category sales",
+            "expression": "SUM('Categories'[Sales USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          },
+          {
+            "name": "Category gross profit",
+            "expression": "SUM('Categories'[Profit USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Categories",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Snapshot = Json.Document(Binary.Decompress(Binary.FromText(\"Vc/LTsNADIXhd5m1Zfk2c8ZL4DGqrKoIIiBBpO+vJgvKdP/p+PflUkzUCpXX5XPeCykMLSEsSXDraJwTPdTb9v2zrfN6O6hr9qjBDnKoqLJhpF/b7WNZ3wtFiqSdTsUzk70N7uV6nfd9+13O82mpnaFkiC6cf9D/C00aqjVjBGkLz3ZOD25stDxuO9iU9Fg+/oon+misqNXASEoXOGsf2FNimKAHtyRTiFbudZru\", BinaryEncoding.Base64), Compression.Deflate)),",
+                "    Rows = Table.FromRows(Snapshot, type table [#\"Year\" = nullable text, #\"Category\" = nullable text, #\"Sales USD\" = nullable number, #\"Profit USD\" = nullable number])",
+                "in",
+                "    Rows"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Reseller Lines",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Price group",
+            "dataType": "string",
+            "sourceColumn": "Price group",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales USD",
+            "dataType": "double",
+            "sourceColumn": "Sales USD",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Profit USD",
+            "dataType": "double",
+            "sourceColumn": "Profit USD",
+            "summarizeBy": "none"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Reseller gross profit",
+            "expression": "SUM('Reseller Lines'[Profit USD])",
+            "formatString": "$#,0.00;($#,0.00)"
+          },
+          {
+            "name": "Reseller margin",
+            "expression": "DIVIDE([Reseller gross profit], SUM('Reseller Lines'[Sales USD]))",
+            "formatString": "0.00%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Reseller Lines",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Snapshot = Json.Document(Binary.Decompress(Binary.FromText(\"XcwxDsIwDADAr6DMrmU7sR3viE9UmUqHShUgoP8nC6hlP904JiGWBOm8vKb7dnvP1wRMSlENWWDgqEKCkhv87GVb19PjuUxzt1WdChFaQJVQF+Svzf9vb50JucCQTaO/5jt7eN2CzB3DQVg0DIu29gE=\", BinaryEncoding.Base64), Compression.Deflate)),",
+                "    Rows = Table.FromRows(Snapshot, type table [#\"Year\" = nullable text, #\"Price group\" = nullable text, #\"Sales USD\" = nullable number, #\"Profit USD\" = nullable number])",
+                "in",
+                "    Rows"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "da5be7be-24fb-591e-9944-98d66daffb7c",
+        "fromTable": "Channel Results",
+        "fromColumn": "Year",
+        "toTable": "Year",
+        "toColumn": "Year"
+      },
+      {
+        "name": "d4039966-ecce-5f35-9688-b54f4d91f9ab",
+        "fromTable": "Monthly Results",
+        "fromColumn": "Year",
+        "toTable": "Year",
+        "toColumn": "Year"
+      },
+      {
+        "name": "6fb3f600-0281-56ff-822c-5b40f3c49d56",
+        "fromTable": "Categories",
+        "fromColumn": "Year",
+        "toTable": "Year",
+        "toColumn": "Year"
+      },
+      {
+        "name": "7b1bd328-76f4-52aa-87b9-a234f60e0a09",
+        "fromTable": "Reseller Lines",
+        "fromColumn": "Year",
+        "toTable": "Year",
+        "toColumn": "Year"
+      }
+    ]
+  }
+}
